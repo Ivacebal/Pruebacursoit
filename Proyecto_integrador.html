@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto integrador</title>
+    <style>
+        #Resaltado{
+background-color: yellow;
+font-size: 50px;
+width: 80%;
+        }
+        header{
+            background-color:hsl(0, 15%, 92%);
+            width: 90%;
+        }
+        main{
+            background-color: lightgray;
+            width: 250px;
+            margin-left: 50px;
+        }
+        .Botones{
+            background-color: black;
+            color:white
+        }
+        span{
+            color: hsl(0, 91%, 41%);
+        }
+  
+            
+        
+        
+    </style>
+</head>
+<body>
+    <?php
+    $to = "info@hotmail.com";
+    $subject = "Mail desde el formulario";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" .
+    "\r\n";
+    $nombre = $_POST['nombre'];
+    $email = $_POST['email'];
+    $comentarios = $_POST['comentarios'];
+    $message = "
+    <html>
+    <head>
+    <title>HTML</title>
+    </head>
+    <body>
+    <h1>Información del formulario</h1>
+    <p>Nombre: $nombre </p>
+    <p>Email: $email </p>
+    <p>Comentarios: $comentarios </p>
+    </body>
+    </html>";
+     echo 'Gracias por comunicarse con nosotros';
+    mail($to, $subject, $message, $headers);
+    ?>
+
+
+
+<header>
+    <h1>Servicios</h1>
+    <ol>
+        <li>Análisis de perfil (Benchmarking)</li>
+        <li>Revisión y activación de canales.</li>
+        <li>Gestión creación y diseño de contenido</li>
+        <li>Respuestas a mensajes y consultas</li>
+        <li>Segmentación de promociones según el público objetivo de la pauta publicitaria</li>
+        <li>Diagramamos un calendario que se ajuste a los objetivos de la empresa</li>
+        <li id="Resaltado"><strong>¡Empezamos a comunicar!</strong></li>
+    </ol>
+   
+</header>
+<main>
+    
+<form action="codigo.php" method="post"> <br>
+<label for="Nombre">Nombre <span>*</span></label> <br>
+<input type="text" id="Nombre" name="Nombre" placeholder="Juan García" required> <br>
+<label for="Email">Email principal y de referencia <span>*</span></label><br>
+<input type="email" id="Email" name="Email" placeholder="info@mimail.com" required> <br>
+<label for="Mensaje">Mensaje <span>*</span></label> <br>
+<textarea name="Mensaje" id="Mensaje" cols="20" rows="3"></textarea><br>
+<button class="Botones">Enviar consulta </button>
+<button class="Botones">Borrar</button>
+
+</form>
+</main>
+</body>
+</html>
